@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>AJKBISE RESULT VIEWER ApI</title>
+</head>
+<body>
+  <h1>AJKBISE PRACTICAL SLIP</h1>
+  
+  <form>
+    <label for="rollno">Enter Roll Number:</label>
+    <input type="text" id="rollno" name="rollno">
+    <button type="button" onclick="showResult()">Show Result</button>
+  </form>
+  
+  <hr>
+  
+  <div id="resultArea">
+    <!-- The result will be displayed here -->
+  </div>
+  
+  <script>
+    function showResult() {
+      var rollno = document.getElementById('rollno').value;
+      var resultUrl = "https://www.ajkbise.edu.pk/online-rollnoslips/print_stdpractrollnoslip12.php?RollNo=" + encodeURIComponent(rollno);
+      
+      // Clear previous result (if any)
+      document.getElementById('resultArea').innerHTML = "";
+      
+      // Create an iframe and set its source to the result URL
+      var iframe = document.createElement('iframe');
+      iframe.src = resultUrl;
+      iframe.style.width = "45%";
+      iframe.style.height = "400px";
+      
+      // Append the iframe to the result area
+      document.getElementById('resultArea').appendChild(iframe);
+    }
+  </script>
+</body>
+</html>
